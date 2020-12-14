@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maple Simulator</title>
+    <style>
+        input[type='number'] { font-size: 10px; }
+    </style>        
+</head>
+
+<body>
+    <div id="main_div">
+        <div id="character_div">
+            <label style="font-size:30px"> ------------------ Character Status ------------------ <label><br><br>
+            <label style="font-size:13px">STR</label>
+            <input oninput="set_total_value()" style="font-size:13px;" size="13" type="number" id="character_str"></input>
+            <label style="font-size:13px">DEX</label>
+            <input oninput="set_total_value()" style="font-size:13px" size="13" type="number" id="character_dex"></input>
+            <label style="font-size:13px">INT</label>
+            <input oninput="set_total_value()" style="font-size:13px" size="13" type="number" id="character_int"></input>
+            <label style="font-size:13px">LUK</label>
+            <input oninput="set_total_value()" style="font-size:13px" size="13" type="number" id="character_luk"></input>
+            <br>
+            <label style="font-size:13px">WA</label>
+            <input oninput="set_total_value()" style="font-size:13px" size="13" type="number" id="character_wa"></input>
+            <label style="font-size:13px">MA</label>
+            <input oninput="set_total_value()" style="font-size:13px" size="13" type="number" id="character_ma"></input>
+            <label style="font-size:13px">MAGIC</label>
+            <input oninput="set_total_value()" style="font-size:13px" size="13" type="number" id="character_magic"></input>
+            <label style="font-size:13px">MASTERY</label>
+            <input oninput="set_total_value()" style="font-size:13px" size="13" type="number" id="character_mastery"></input>
+            <label style="font-size:13px">Linked Bonus</label>
+            <input oninput="set_total_value()" style="font-size:13px" size="13" type="number" id="character_bonus"></input>
+        </div>
+        <br><br><br>
+        <div id = "weapons_div">
+            <label style="font-size:30px"> ------------------- Weapon Type -------------------- <label><br><br>
+                <fieldset style="font-size:15px" id="weapon_type">
+                    <input style="font-size:13px" type="radio" id="bow" name="weapon_type" value="bow">
+                    <labe style="font-size:15px"l>Bow</label>
+
+                    <input style="font-size:13px" type="radio" id="crossbow" name="weapon_type" value="crossbow">
+                    <labe style="font-size:15px"l>Crossbow</label>
+                        
+                    <input style="font-size:13px" type="radio" id="1h_sword" name="weapon_type" value="1h_sword">
+                    <labe style="font-size:15px"l>1H Sword</label>
+
+                    <input style="font-size:13px" type="radio" id="2h_sword" name="weapon_type" value="2h_sword">
+                     <labe style="font-size:15px"l>2H Sword</label>
+
+                    <input style="font-size:13px" type="radio" id="1h_blunt" name="weapon_type" value="1h_blunt">
+                    <labe style="font-size:15px"l>1H Blunt</label>
+
+                    <input style="font-size:13px" type="radio" id="2h_blunt" name="weapon_type" value="2h_blunt">
+                    <labe style="font-size:15px"l>2H Blunt</label>
+
+                    <input style="font-size:13px" type="radio" id="polearm" name="weapon_type" value="polearm">
+                    <labe style="font-size:15px"l>Polearm</label>
+
+                    <input style="font-size:13px" type="radio" id="spear" name="weapon_type" value="spear">
+                    <labe style="font-size:15px"l>Spear</label>
+
+                    <input style="font-size:13px" type="radio" id="gun" name="weapon_type" value="gun">
+                    <labe style="font-size:15px"l>Gun</label>
+
+                    <input style="font-size:13px" type="radio" id="claw" name="weapon_type" value="claw">
+                    <labe style="font-size:15px"l>Claw</label>
+
+                    <input style="font-size:13px" type="radio" id="knucle" name="weapon_type" value="knucle">
+                    <labe style="font-size:15px"l>Knucle</label>
+
+                    <input style="font-size:13px" type="radio" id="dagger" name="weapon_type" value="dagger">
+                    <labe style="font-size:15px"l>Dagger</label>
+
+                    <input style="font-size:13px" type="radio" id="staff" name="weapon_type" value="staff">
+                    <labe style="font-size:15px"l>Staff</label>
+
+                    <input style="font-size:13px" type="radio" id="wand" name="weapon_type" value="wand">
+                    <labe style="font-size:15px"l>Wand</label>
+                </fieldset>
+        </div>
+        <br><br><br>
+        <div id="itens_div">
+            <label style="font-size:30px"> ------------------------- Itens -------------------------- <label><br><br>
+            <fieldset id="itens">
+                <fieldset id="item_cmp">
+                    <input onchange="set_total_value();calculate_range()" style="font-size:13px" type="radio" id="item_1" name="item_cmp" value="item1">
+                    <label style="font-size:15px">Item 1 ----------------</label>
+                    <label style="font-size:15px">STR</label>
+                    <input oninput="set_total_value()" value="0" style="font-size:13px;" size="13" type="number" id="item_1_str"></input>
+                    <label style="font-size:15px">DEX</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_1_dex"></input>
+                    <label style="font-size:15px">INT</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_1_int"></input>
+                    <label style="font-size:15px">LUK</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_1_luk"></input>
+                    <label style="font-size:15px">WA</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_1_wa"></input>
+                    <label style="font-size:15px">MA</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_1_ma"></input>
+
+                    <br>
+
+                    <input onchange="set_total_value();calculate_range()" style="font-size:13px" type="radio" id="item_2" name="item_cmp" value="item2">
+                    <label style="font-size:15px">Item 2 ----------------</label>
+                    <label style="font-size:15px">STR</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_2_str"></input>
+                    <label style="font-size:15px">DEX</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_2_dex"></input>
+                    <label style="font-size:15px">INT</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_2_int"></input>
+                    <label style="font-size:15px">LUK</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_2_luk"></input>
+                    <label style="font-size:15px">WA</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_2_wa"></input>
+                    <label style="font-size:15px">MA</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_2_ma"></input>
+
+                    <br>
+
+                    <input onchange="set_total_value();calculate_range()" style="font-size:13px" type="radio" id="item_3" name="item_cmp" value="item3">
+                    <label style="font-size:15px">Item 3 ----------------</label>
+                    <label style="font-size:15px">STR</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_3_str"></input>
+                    <label style="font-size:15px">DEX</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_3_dex"></input>
+                    <label style="font-size:15px">INT</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_3_int"></input>
+                    <label style="font-size:15px">LUK</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_3_luk"></input>
+                    <label style="font-size:15px">WA</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_3_wa"></input>
+                    <label style="font-size:15px">MA</label>
+                    <input oninput="set_total_value()"  value="0" style="font-size:13px;" size="13" type="number" id="item_3_ma"></input>
+                </fieldset>
+
+                <br>
+
+                <label style="font-size:30px"> --------------------- Total ---------------------------- <label><br><br>
+                <table style="margin-left:2%">
+                    <tr style="font-size:20px">
+                        <th>STR</th>
+                        <th>DEX</th>
+                        <th>INT</th>
+                        <th>LUK</th>
+                        <th>WA</th>
+                        <th>MA</th>
+                        <th>MAGIC</th>
+                        <th>MASTERY</th>
+                    </tr>
+                    <tr style="font-size:16px">
+                        <th id="total_str"></th>
+                        <th id="total_dex"></th>
+                        <th id="total_int"></th>
+                        <th id="total_luk"></th>
+                        <th id="total_wa"></th>
+                        <th id="total_ma"></th>
+                        <th id="total_magic"></th>
+                        <th id="total_mastery"></th>
+                    </tr>
+                </table>
+                <br>
+
+            </div>
+        <br><br><br>
+        <div id="result_div">
+            <label style="font-size:30px"> ------------------------ Result -------------------------- <label>
+            <br>
+            <button id="calculate" type="button" onclick="calculate_range()">Calculate</button>
+            <br>
+            <labe style="font-size:25px"l>MAX: </label>
+            <label style="font-size:20px" id="max"></label><br>
+            <!--labe style="font-size:25px"l>MIN: </label-->
+            <!--label style="font-size:20px" id="min"></label--><br>
+        </div>
+    </div>
+    <script src="main.js"></script> 
+</body>
+
+</html>
